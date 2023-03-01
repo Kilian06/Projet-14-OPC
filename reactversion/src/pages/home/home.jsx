@@ -41,22 +41,22 @@ function Home() {
         dispatch(storeForm({firstName,lastName, birthDate, startDate, street, city, stateCountry, zipCode, department}))
 
         }}>
-        <label>Fisrt Name</label>
-        <input required type="text" value={"2"} onChange={(e) => setFirstName(e.target.value)}></input>
-        <label>Last Name</label>
-        <input required type="text" value={"2"} onChange={(e) => setlastName(e.target.value)}></input>
-        <label>Date of Birth </label>
-        <input required type="date" value={"2023-02-01"} min="1900-01-01" onChange={(e) => setBirthDate(e.target.value)}></input>
-        <label>Start Date</label>
-        <input required type="date" value={"2023-02-02"} min="1900-01-01" onChange={(e) => setStartDate(e.target.value)}></input>
+        <label for="firstName">Fisrt Name</label>
+        <input id="firstName" required type="text" value={"2"} onChange={(e) => setFirstName(e.target.value)}></input>
+        <label for="lastName">Last Name</label>
+        <input id="lastName" required type="text" value={"2"} onChange={(e) => setlastName(e.target.value)}></input>
+        <label for="birthDate">Date of Birth </label>
+        <input id="birthDate" required type="date" value={"2023-02-01"} min="1900-01-01" onChange={(e) => setBirthDate(e.target.value)}></input>
+        <label for="startDate">Start Date</label>
+        <input id="startDate" required type="date" value={"2023-02-02"} min="1900-01-01" onChange={(e) => setStartDate(e.target.value)}></input>
         <div>
           <p>Adress</p>
-          <label>Street</label>
-          <input required type="text" value={"2"} onChange={(e) => setStreet(e.target.value)}></input>
-          <label>City</label>
-          <input required type="text" value={"2"} onChange={(e) => setCity(e.target.value)}></input>
-          <label>State</label>
-          <select name="state-select" id="state-select" onChange={(e) => setState(e.target.value)}>
+          <label for="street">Street</label>
+          <input id="street" required type="text" value={"2"} onChange={(e) => setStreet(e.target.value)}></input>
+          <label for="city" >City</label>
+          <input id="city" required type="text" value={"2"} onChange={(e) => setCity(e.target.value)}></input>
+          <label for="stateCountry">State</label>
+          <select id="stateCountry" name="state-select" onChange={(e) => setState(e.target.value)}>
             <option value="">--Select a State--</option>
             {countryStates.map((state, index) => (
               <option key={index} value={state.name}>
@@ -64,11 +64,11 @@ function Home() {
               </option>
             ))}
           </select>
-          <label>Zip Code</label>
-          <input required type="number" value={"2"} onChange={(e) => setZipCode(e.target.value)}></input>
+          <label for="zipCode">Zip Code</label>
+          <input if="zipCode" required type="number" value={"2"} onChange={(e) => setZipCode(e.target.value)}></input>
         </div>
-        <label>Department</label>
-        <select name="state-select" id="state-select" onChange={(e) => setDepartment(e.target.value)}>
+        <label for="department">Department</label>
+        <select id="department" name="state-select" onChange={(e) => setDepartment(e.target.value)}>
           <option value="">--Select a Department--</option>
           {departmentData.map((value, index) => (
             <option key={index} value={value}>
