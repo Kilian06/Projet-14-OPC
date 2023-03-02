@@ -36,6 +36,7 @@ function Table() {
     nextPage,
     previousPage,
     canPreviousPage,
+    setPageSize,
     canNextPage,
     state: { pageIndex, pageSize },
   } = useTable(
@@ -53,8 +54,20 @@ function Table() {
   }, [data]);
 
   return (
-    <div>
+    <>        <select
+    value={pageSize}
+    onChange={e => {
+      setPageSize(Number(e.target.value))
+    }}
+  >
+    {[10, 20, 30, 40, 50].map(pageSize => (
+      <option key={pageSize} value={pageSize}>
+        Show {pageSize}
+      </option>
+    ))}
+  </select>
       <table {...getTableProps()}>
+
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -70,6 +83,13 @@ function Table() {
                   }
                 >
                   {column.render("Header")}
+                  <span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? ' 🔽'
+                        : ' 🔼'
+                      : ''}
+                  </span>
                 </th>
               ))}
             </tr>
@@ -102,7 +122,7 @@ function Table() {
           {">"}
         </button>
       </div>
-    </div>
+    </>
   );
 }
 export default Table

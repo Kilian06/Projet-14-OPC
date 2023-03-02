@@ -7,6 +7,9 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { storeForm } from "../../store/store";
+import {Modal} from "modal-component-kle"
+// import Modal from "../../components/modal/modal";
+
 
 function Home() {
   const [firstName, setFirstName] = useState("1");
@@ -18,44 +21,49 @@ function Home() {
   const [stateCountry, setState] = useState("7");
   const [zipCode, setZipCode] = useState("8");
   const [department, setDepartment] = useState("9");
+
+  const [modal, setModal] = useState(false)
   const storeLength = useSelector((state) => state.formData.length)
 
 
   const dispatch = useDispatch();
   console.log(storeLength)
 
+  console.log(modal)
 
 
 
-
+  const handleModalClose = () => {
+    setModal(false);
+  };
 
 
 
   return (
     <>
       <h1>HRnet</h1>
-      <Link to="/employee-list">Viex Current Employee</Link>
+      <Link to="/employee-list">View Current Employee</Link>
       <h2>Create Employee</h2>
       <form onSubmit={(e) => {
         e.preventDefault();
-        dispatch(storeForm({firstName,lastName, birthDate, startDate, street, city, stateCountry, zipCode, department}))
-
+        dispatch(storeForm({firstName,lastName, birthDate, startDate, street, city, stateCountry, zipCode, department}));
+        setModal(true);
         }}>
-        <label for="firstName">Fisrt Name</label>
+        <label htmlFor="firstName">Fisrt Name</label>
         <input id="firstName" required type="text" value={"2"} onChange={(e) => setFirstName(e.target.value)}></input>
-        <label for="lastName">Last Name</label>
+        <label htmlFor="lastName">Last Name</label>
         <input id="lastName" required type="text" value={"2"} onChange={(e) => setlastName(e.target.value)}></input>
-        <label for="birthDate">Date of Birth </label>
+        <label htmlFor="birthDate">Date of Birth </label>
         <input id="birthDate" required type="date" value={"2023-02-01"} min="1900-01-01" onChange={(e) => setBirthDate(e.target.value)}></input>
-        <label for="startDate">Start Date</label>
+        <label htmlFor="startDate">Start Date</label>
         <input id="startDate" required type="date" value={"2023-02-02"} min="1900-01-01" onChange={(e) => setStartDate(e.target.value)}></input>
-        <div>
+        <div className="insideFomr">
           <p>Adress</p>
-          <label for="street">Street</label>
+          <label htmlFor="street">Street</label>
           <input id="street" required type="text" value={"2"} onChange={(e) => setStreet(e.target.value)}></input>
-          <label for="city" >City</label>
+          <label htmlFor="city" >City</label>
           <input id="city" required type="text" value={"2"} onChange={(e) => setCity(e.target.value)}></input>
-          <label for="stateCountry">State</label>
+          <label htmlFor="stateCountry">State</label>
           <select id="stateCountry" name="state-select" onChange={(e) => setState(e.target.value)}>
             <option value="">--Select a State--</option>
             {countryStates.map((state, index) => (
@@ -64,10 +72,10 @@ function Home() {
               </option>
             ))}
           </select>
-          <label for="zipCode">Zip Code</label>
-          <input if="zipCode" required type="number" value={"2"} onChange={(e) => setZipCode(e.target.value)}></input>
+          <label htmlFor="zipCode">Zip Code</label>
+          <input id="zipCode" required type="number" value={"2"} onChange={(e) => setZipCode(e.target.value)}></input>
         </div>
-        <label for="department">Department</label>
+        <label htmlFor="department">Department</label>
         <select id="department" name="state-select" onChange={(e) => setDepartment(e.target.value)}>
           <option value="">--Select a Department--</option>
           {departmentData.map((value, index) => (
@@ -77,6 +85,7 @@ function Home() {
           ))}
         </select>
         <button type="submit">Valdier</button>
+        <Modal bgModal={"#FF0000"} bgContent={"#00FF00"} colorContent={"FFFFFF"} colorClose={"FFFFFF"} visible={modal} closelink={"/employee-list"} textContent={"Employee Created!"} onClose={handleModalClose}/>
       </form>
     </>
   );
