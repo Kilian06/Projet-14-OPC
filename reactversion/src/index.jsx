@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
@@ -12,11 +12,13 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 root.render(
   <Provider store={store}>
+    <Suspense >
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/employee-list" element={<EmployeeList />} />
       </Routes>
     </BrowserRouter>
+    </Suspense>
   </Provider>
 );
