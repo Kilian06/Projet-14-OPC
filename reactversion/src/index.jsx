@@ -12,7 +12,7 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 root.render(
   <Provider store={store}>
-    <Suspense >
+    <Suspense fallback={null} >
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
