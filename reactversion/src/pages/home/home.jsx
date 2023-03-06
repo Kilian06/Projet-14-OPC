@@ -85,7 +85,7 @@ function Home() {
           ))}
         </select>
         <button type="submit">Valdier</button>
-        <Modal bgModal={"#FF0000"} bgContent={"#00FF00"} colorContent={"FFFFFF"} colorClose={"FFFFFF"} visible={modal} closelink={"/employee-list"} textContent={"Employee Created!"} onClose={handleModalClose}/>
+        <Modal bgModal={"#FF0000"} bgContent={"#00FF00"} colorContent={"FFFFFF"} colorClose={"FFFFFF"} visible={modal} closelink={""} textContent={"Employee Created!"} onClose={handleModalClose}/>
       </form>
     </>
   );
