@@ -2,10 +2,11 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const formDataSlice = createSlice({
   name: "formData",
-  initialState: [],
+  initialState:     localStorage.getItem("formData") || [],
   reducers: {
     storeForm: (state, action) => {
       state.push(action.payload);
+      
     },
     saveStore:(state) => {
       window.localStorage.setItem("formData",state)
