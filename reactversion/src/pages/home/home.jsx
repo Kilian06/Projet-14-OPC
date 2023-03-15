@@ -9,15 +9,15 @@ import { Modal } from "modal-component-kle";
 import { useEffect } from "react";
 
 function Home() {
-  const [firstName, setFirstName] = useState("1");
-  const [lastName, setlastName] = useState("2");
-  const [birthDate, setBirthDate] = useState("3");
-  const [startDate, setStartDate] = useState("4");
-  const [street, setStreet] = useState("5");
-  const [city, setCity] = useState("6");
-  const [stateCountry, setState] = useState("7");
-  const [zipCode, setZipCode] = useState("8");
-  const [department, setDepartment] = useState("9");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [stateCountry, setState] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [department, setDepartment] = useState("");
   const [stateCountryAbb, setStateAbb] = useState("");
 
   const [modal, setModal] = useState(false);
