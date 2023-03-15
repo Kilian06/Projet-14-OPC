@@ -1,6 +1,16 @@
 import React, { useEffect, useMemo } from "react";
-import { useTable, useSortBy, usePagination } from "react-table";
+import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
 import { useSelector } from "react-redux";
+
+function GlobalFilter({ globalFilter, setGlobalFilter }) {
+  return (
+    <input
+      value={globalFilter || ""}
+      onChange={(e) => setGlobalFilter(e.target.value || undefined)}
+      placeholder="Rechercher..."
+    />
+  );
+}
 
 
 function Table() {
@@ -24,6 +34,7 @@ function Table() {
     ],
     []
   );
+  
 
   const {
     getTableProps,
@@ -38,24 +49,26 @@ function Table() {
     canPreviousPage,
     setPageSize,
     canNextPage,
-    state: { pageIndex, pageSize },
+    state: { pageIndex, pageSize, globalFilter },
+    setGlobalFilter,
   } = useTable(
     {
       columns,
       data,
       initialState: { pageIndex: 0, pageSize: 10 },
     },
+    useGlobalFilter,
     useSortBy,
     usePagination
   );
-
   useEffect(() => {
 
     localStorage.setItem("employees", JSON.stringify(data));
   }, [data]);
 
   return (
-    <>        <select
+    <><div className="tableHeader">
+      <select
     value={pageSize}
     onChange={e => {
       setPageSize(Number(e.target.value))
@@ -67,6 +80,12 @@ function Table() {
       </option>
     ))}
   </select>
+  <div className="inputSearch">  <GlobalFilter
+      globalFilter={globalFilter}
+      setGlobalFilter={setGlobalFilter}
+    /></div>
+      </div>        
+
       <table {...getTableProps()}>
 
         <thead>

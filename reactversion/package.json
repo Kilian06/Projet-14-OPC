@@ -1,7 +1,7 @@
 {
   "name": "reactversion",
   "version": "0.1.0",
-  "private": true,
+  "priYvate": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@tanstack/react-table": "^8.7.9",
