@@ -2,7 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const formDataSlice = createSlice({
   name: "formData",
-  initialState:     [],
+  initialState: [],
   reducers: {
     storeForm: (state, action) => {
       state.push(action.payload);
@@ -10,7 +10,7 @@ const formDataSlice = createSlice({
   },
 });
 
-export const { storeForm, saveStore } = formDataSlice.actions;
+export const { storeForm } = formDataSlice.actions;
 
 export default formDataSlice.reducer;
 

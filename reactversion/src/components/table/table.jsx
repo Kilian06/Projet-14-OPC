@@ -1,5 +1,10 @@
 import React, { useEffect, useMemo } from "react";
-import { useTable, useSortBy, usePagination, useGlobalFilter } from "react-table";
+import {
+  useTable,
+  useSortBy,
+  usePagination,
+  useGlobalFilter,
+} from "react-table";
 import { useSelector } from "react-redux";
 
 function GlobalFilter({ globalFilter, setGlobalFilter }) {
@@ -12,9 +17,8 @@ function GlobalFilter({ globalFilter, setGlobalFilter }) {
   );
 }
 
-
 function Table() {
-    const test = useSelector((state) => state.formData)
+  const test = useSelector((state) => state.formData);
 
   const data = useMemo(() => {
     return test;
@@ -34,7 +38,6 @@ function Table() {
     ],
     []
   );
-  
 
   const {
     getTableProps,
@@ -62,32 +65,34 @@ function Table() {
     usePagination
   );
   useEffect(() => {
-
     localStorage.setItem("employees", JSON.stringify(data));
   }, [data]);
 
   return (
-    <><div className="tableHeader">
-      <select
-    value={pageSize}
-    onChange={e => {
-      setPageSize(Number(e.target.value))
-    }}
-  >
-    {[10, 20, 30, 40, 50].map(pageSize => (
-      <option key={pageSize} value={pageSize}>
-        Show {pageSize}
-      </option>
-    ))}
-  </select>
-  <div className="inputSearch">  <GlobalFilter
-      globalFilter={globalFilter}
-      setGlobalFilter={setGlobalFilter}
-    /></div>
-      </div>        
+    <>
+      <div className="tableHeader">
+        <select
+          value={pageSize}
+          onChange={(e) => {
+            setPageSize(Number(e.target.value));
+          }}
+        >
+          {[10, 20, 30, 40, 50].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
+        <div className="inputSearch">
+          {" "}
+          <GlobalFilter
+            globalFilter={globalFilter}
+            setGlobalFilter={setGlobalFilter}
+          />
+        </div>
+      </div>
 
       <table {...getTableProps()}>
-
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -106,9 +111,9 @@ function Table() {
                   <span>
                     {column.isSorted
                       ? column.isSortedDesc
-                        ? ' 🔽'
-                        : ' 🔼'
-                      : ''}
+                        ? " 🔽"
+                        : " 🔼"
+                      : ""}
                   </span>
                 </th>
               ))}
@@ -145,4 +150,4 @@ function Table() {
     </>
   );
 }
-export default Table
+export default Table;
