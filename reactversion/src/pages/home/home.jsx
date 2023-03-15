@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 import { countryStates } from "../data/countryState";
 import { departmentData } from "../data/departement";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { useState } from "react";
 import { storeForm } from "../../store/store";
 import { Modal } from "modal-component-kle";
 import { useEffect } from "react";
-// import Modal from "../../components/modal/modal";
 
 function Home() {
   const [firstName, setFirstName] = useState("1");
@@ -148,8 +146,16 @@ function Home() {
           ))}
         </select>
         <button type="submit">Valdier</button>
-        <Modal bgModal={"#deb992"} bgContent={"#042033"} colorContent={"#869ba9"} colorClose={"#869ba9"} visible={modal} closelink={"/employee-list"} textContent={"Employee Created!"} onClose={handleModalClose}/>
-
+        <Modal
+          bgModal={"#deb992"}
+          bgContent={"#042033"}
+          colorContent={"#869ba9"}
+          colorClose={"#869ba9"}
+          visible={modal}
+          closelink={"/employee-list"}
+          textContent={"Employee Created!"}
+          onClose={handleModalClose}
+        />
       </form>
     </>
   );
